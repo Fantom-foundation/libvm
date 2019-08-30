@@ -1,4 +1,7 @@
 use failure::Error;
+use libconsensus::Consensus;
+use serde::de::DeserializeOwned;
+use serde::Serialize;
 
 pub trait Instruction {
     fn size(&self) -> Result<usize, Error>;
@@ -30,4 +33,13 @@ where
     fn can_run(&self) -> bool;
     fn is_done(&self) -> bool;
     fn increase_pc(&mut self, steps: usize);
+}
+
+pub trait DistributedVM<C, I, D, A>
+where
+    I: Instruction,
+    C: Cpu<I>,
+    D: Serialize + DeserializeOwned,
+    A: Consensus<D> {
+    fn serve(self);
 }

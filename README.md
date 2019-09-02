@@ -42,13 +42,29 @@ impl Cpu for ExampleCpu {
     }
 }
 
+struct ExampleConsensus {};
+
+impl Consensus<u8> for ExampleConsensus {};
+
+struct ExampleDistributedVM {
+    cpu: ExampleCpu,
+};
+
+impl DistributedVM<Cpu<ExampleInstruction>, ExampleInstruction, u8, ExampleConsensus<u8>>
+    for ExampleDistributedVM {
+    fn serve(self) {
+        while !cpu.is_done() {
+            cpu.execute();
+        }
+    }
+} 
+
 fn run(program: Vec<ExampleInstruction>) {
     let cpu = ExampleCpu {
         program,
         pc: 0,
     };
-    while !cpu.is_done() {
-        cpu.execute();
-    }
+    let dvm = ExampleDistributedVM { cpu };
+    dvm.serve();
 }
 ```

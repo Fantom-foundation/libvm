@@ -1,5 +1,7 @@
 use failure::Error;
+use libcommon_rs::peer::{PeerId, PeerList};
 use libconsensus::Consensus;
+use libtransport::Transport;
 use serde::de::DeserializeOwned;
 use serde::Serialize;
 
@@ -35,11 +37,14 @@ where
     fn increase_pc(&mut self, steps: usize);
 }
 
-pub trait DistributedVM<C, I, D, A>
+pub trait DistributedVM<C, I, D, A, Id, L, T>
 where
     I: Instruction,
     C: Cpu<I>,
     D: Serialize + DeserializeOwned,
-    A: Consensus<D> {
+    A: Consensus<D>,
+    Id: PeerId,
+    L: PeerList<Id, Error>,
+    T: Transport<Id, D, Error, L> {
     fn serve(self);
 }

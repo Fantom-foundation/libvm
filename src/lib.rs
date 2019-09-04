@@ -46,5 +46,7 @@ where
     Id: PeerId,
     L: PeerList<Id, Error>,
     T: Transport<Id, D, Error, L> {
+    fn set_consensus(&mut self, algorithm: A);
+    fn set_transport(&mut self, transport: T);
     fn serve(self);
 }

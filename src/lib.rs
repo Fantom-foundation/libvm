@@ -35,12 +35,12 @@ where
     fn increase_pc(&mut self, steps: usize);
 }
 
-pub trait DistributedVM<C, I, D, A>
+pub trait DistributedVM<'de, C, I, D, A>
 where
     I: Instruction,
     C: Cpu<I>,
     D: Serialize + DeserializeOwned,
-    A: Consensus<D> {
+    A: Consensus<'de, D> {
     fn set_cpu(&mut self, cpu: C);
     fn set_consensus(&mut self, algorithm: A);
     fn serve(self);

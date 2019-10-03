@@ -16,9 +16,7 @@ where
         if !self.can_run() || self.is_done() {
             return Ok(0);
         }
-        let instruction = self
-            .get_next_instruction()
-            .unwrap();
+        let instruction = self.get_next_instruction().unwrap();
         self.increase_pc(instruction.size()?);
         let cycles = self.get_cycles_for_instruction(&instruction)?;
         self.execute_instruction(instruction)?;
@@ -40,7 +38,8 @@ where
     I: Instruction,
     C: Cpu<I>,
     D: Serialize + DeserializeOwned,
-    A: Consensus<'de, D> {
+    A: Consensus<'de, D>,
+{
     fn set_cpu(&mut self, cpu: C);
     fn set_consensus(&mut self, algorithm: A);
     fn serve(self);

@@ -37,7 +37,7 @@ pub trait DistributedVM<C, I, D, A>
 where
     I: Instruction,
     C: Cpu<I>,
-    D: Serialize + DeserializeOwned,
+    D: Serialize + DeserializeOwned + AsRef<u8>,
     A: Consensus<D>,
 {
     fn set_cpu(&mut self, cpu: C);

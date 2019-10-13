@@ -1,6 +1,6 @@
 [package]
 name = "libvm"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Agustin Chiappe Berrini <jnieve@gmail.com>"]
 edition = "2018"
 
@@ -9,7 +9,7 @@ edition = "2018"
 [dependencies]
 failure = "0.1.5"
 libcommon-rs = { git = "https://github.com/Fantom-foundation/libcommon-rs" }
-libconsensus = { git = "https://github.com/Fantom-foundation/libconsensus" }
-libtransport = { git = "https://github.com/Fantom-foundation/libtransport" }
+libconsensus = { git = "https://github.com/Fantom-foundation/libconsensus", version = "0.0.5" }
+libtransport = { git = "https://github.com/Fantom-foundation/libtransport", version = "0.0.3" }
 serde = "1.0.101"
 serde_derive = "1.0.101"

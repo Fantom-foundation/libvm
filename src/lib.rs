@@ -31,6 +31,7 @@ where
     fn can_run(&self) -> bool;
     fn is_done(&self) -> bool;
     fn increase_pc(&mut self, steps: usize);
+    fn set_instructions<J: Iterator<Item=I>>(&mut self, i: J);
 }
 
 pub trait DistributedVM<'d, C, I, D, A>

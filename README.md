@@ -1,10 +1,12 @@
-# libvm
+libvm
+=====
+![Rust: nightly](https://img.shields.io/badge/Rust-nightly-blue.svg) ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg) [![Build Status](https://travis-ci.org/Fantom-foundation/evm-rs.svg?branch=master)](https://travis-ci.org/Fantom-foundation/evm-rs)
 
 `libvm` is an abstraction of the concept of a vm.
 
 Example of use:
 
-```
+```rust
 struct ExampleCpu {
     program: Vec<ExampleInstruction>,
     pc: usize,
@@ -57,7 +59,7 @@ impl DistributedVM<Cpu<ExampleInstruction>, ExampleInstruction, u8, ExampleConse
             cpu.execute();
         }
     }
-} 
+}
 
 fn run(program: Vec<ExampleInstruction>) {
     let cpu = ExampleCpu {

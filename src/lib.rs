@@ -34,10 +34,10 @@ where
     fn set_instructions<J: Iterator<Item=I>>(&mut self, i: J, sender: P);
 }
 
-pub trait DistributedVM<'d, C, I, D, A>
+pub trait DistributedVM<'d, C, I, D, A, P>
 where
     I: Instruction,
-    C: Cpu<I>,
+    C: Cpu<I, P>,
     D: Serialize + DeserializeOwned,
     A: Consensus<'d, D>,
 {

@@ -8,7 +8,7 @@ pub trait Instruction {
     fn get_cycles(&self) -> Result<usize, Error>;
 }
 
-pub trait Cpu<I>
+pub trait Cpu<I, P>
 where
     I: Instruction,
 {
@@ -31,7 +31,7 @@ where
     fn can_run(&self) -> bool;
     fn is_done(&self) -> bool;
     fn increase_pc(&mut self, steps: usize);
-    fn set_instructions<J: Iterator<Item=I>>(&mut self, i: J);
+    fn set_instructions<J: Iterator<Item=I>>(&mut self, i: J, sender: P);
 }
 
 pub trait DistributedVM<'d, C, I, D, A>

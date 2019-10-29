@@ -10,6 +10,6 @@ edition = "2018"
 failure = "0.1.5"
 libcommon-rs = { git = "https://github.com/Fantom-foundation/libcommon-rs" }
 libconsensus = { git = "https://github.com/Fantom-foundation/libconsensus", version = "0.0.7" }
-libtransport = { git = "https://github.com/Fantom-foundation/libtransport", version = "0.0.3" }
+libtransport = { git = "https://github.com/Fantom-foundation/libtransport", version = "0.0.4" }
 serde = "1.0.101"
 serde_derive = "1.0.101"

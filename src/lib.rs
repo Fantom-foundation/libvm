@@ -1,4 +1,5 @@
 use failure::Error;
+use libcommon_rs::peer::PeerId;
 use libconsensus::Consensus;
 use serde::de::DeserializeOwned;
 use serde::Serialize;
@@ -38,7 +39,8 @@ where
     I: Instruction,
     C: Cpu<I, P>,
     D: Serialize + DeserializeOwned,
-    A: Consensus<'d, D>,
+    A: Consensus<'d, D, P>,
+    P: PeerId,
 {
     fn set_cpu(&mut self, cpu: C);
     fn set_consensus(&mut self, algorithm: A);
